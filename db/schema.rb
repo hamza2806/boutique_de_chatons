@@ -10,20 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2019_09_02_124015) do
-=======
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2019_09_02_094831) do
-=======
-ActiveRecord::Schema.define(version: 2019_09_02_115826) do
->>>>>>> delevery
->>>>>>> delevery
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
+
   create_table "carts", force: :cascade do |t|
     t.bigint "item_id"
     t.bigint "user_id"
@@ -31,8 +22,7 @@ ActiveRecord::Schema.define(version: 2019_09_02_115826) do
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_carts_on_item_id"
     t.index ["user_id"], name: "index_carts_on_user_id"
-=======
-<<<<<<< HEAD
+
   create_table "items", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -40,14 +30,13 @@ ActiveRecord::Schema.define(version: 2019_09_02_115826) do
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-=======
+
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
->>>>>>> delevery
->>>>>>> delevery
+
   end
 
 end
