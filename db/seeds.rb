@@ -10,3 +10,11 @@ Cart.destroy_all
 Order.destroy_all
 User.destroy_all
 
+20.times do
+	user = User.create(email: Faker::Internet.email, password: Faker::Internet.password)
+end
+
+50.times do 
+	item = Item.create(title: Faker::Lorem.word, description: Faker::Lorem.paragraph(sentence_count: 2), price: rand(0.01..99.99))
+end
+
