@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+  devise_for :users
 
 
-  get 'order/index'
+
+  
 resources :carts
+resources :orders
+
+
 
   resources :items
 
