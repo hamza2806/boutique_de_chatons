@@ -66,4 +66,3 @@ gem 'faker'
 gem 'dotenv-rails'
 gem 'activerecord'
 gem 'pry'
-
