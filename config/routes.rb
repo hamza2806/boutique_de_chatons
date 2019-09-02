@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
+  devise_for :users
 
-resources :cards
-=======
+  resources :carts
+  resources :orders
+
   resources :items
->>>>>>> delevery
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
