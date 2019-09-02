@@ -1,4 +1,8 @@
 class Item < ApplicationRecord
+	has_many :join_cart_items
+	has_many :carts, through: :join_cart_items
+	has_many :join_order_items
+	has_many :orders, through: :join_order_items
 	validates :title, :description, :price, :image_url, presence: true;
 	validates :title, length: { maximum: 15};
 	validates :description, length: { maximum: 150};
