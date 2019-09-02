@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
 
-resources :cards
+  get 'order/index'
+resources :carts
 
   resources :items
 
