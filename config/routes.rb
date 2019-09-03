@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :orders
 
   resources :items
-  post "/orders", to: "orders#create", as: "buy"
 
+  post "/orders", to: "orders#create", as: "buy"
+  get "/profiles/:id", to: "profiles#show", as: "profile"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
