@@ -1,4 +1,8 @@
 class CartsController < ApplicationController
+  
+
+ 
+
   def index
   end
 
@@ -11,11 +15,16 @@ class CartsController < ApplicationController
 #----------------------------
 
   def new
+
   end
 
 #----------------------------
 
-  def create
+  def create(user)
+    @user = user
+    @cart = Cart.new
+    @cart.user_id = user.id
+    @cart.save
   end
 
 #----------------------------

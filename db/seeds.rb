@@ -19,11 +19,8 @@ order_list = []
 
 20.times do
 	user = User.create(email: Faker::Internet.email, password: Faker::Internet.password)
+	cart = Cart.create(user: user)
 	user_list << user
-end
-
-20.times do
-	cart = Cart.create(user: user_list.sample)
 	cart_list << cart
 end
 
