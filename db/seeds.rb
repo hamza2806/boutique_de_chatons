@@ -5,16 +5,45 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 Item.destroy_all
 Cart.destroy_all
 Order.destroy_all
 User.destroy_all
 
+user_list = []
+cart_list = []
+item_list = []
+order_list = []
+
 20.times do
 	user = User.create(email: Faker::Internet.email, password: Faker::Internet.password)
+	user_list << user
 end
 
-50.times do 
-	item = Item.create(title: Faker::Lorem.word, description: Faker::Lorem.paragraph(sentence_count: 2), price: rand(0.01..99.99))
+20.times do
+	cart = Cart.create(user: user_list.sample)
+	cart_list << cart
 end
+
+40.times do 
+	item = Item.create(title: Faker::Lorem.word, description: Faker::Lorem.paragraph(sentence_count: 2), price: Faker::Number.decimal(l_digits: 2), image_url: Faker::LoremPixel.image)
+    item_list << item 
+end
+
+20.times do 
+	order = Order.create(user: user_list.sample)
+	order_list << order
+end
+
+40.times do
+	cart_items = JoinCartItem.create(cart: cart_list.sample, item: item_list.sample)
+end
+
+20.times do
+	order_item = JoinOrderItem.create(order: order_list.sample, item: item_list.sample)
+end
+
+
+
 
