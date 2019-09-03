@@ -59,11 +59,72 @@
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+/********************/
+/*  Modif perso     */
+/********************/
+
+.jumbotron-devise {
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+  border-radius: 0.3rem;
+  background-image: url(jumbotron-cat.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  color: white;
+  height: 350px;
+}
+
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4em;
+  
+
+}
+
+.space-footer{
+  margin-top: 15px;
+}
+
+.space-top{
+  margin-top: 15%;
+}
+
+/*********************/
+/*  fin modif perso  */
+/*********************/
+
 *,
 *::before,
 *::after {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+.kitten {
+margin: auto;
+padding: auto;
+margin-bottom: 20px;
+}
+
+.show {
+  margin-left: auto;
+  margin-right: auto;  
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #F3969A;
+  text-align: center;
+  color: #888;
 }
 
 html {
@@ -85,6 +146,8 @@ nav,
 section {
   display: block;
 }
+
+
 
 body {
   margin: 0;
@@ -191,8 +254,20 @@ sup {
   top: -.5em;
 }
 
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: auto;
+  padding-bottom: auto;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 30px;
+  margin-bottom: auto;
+
+}
+
 a {
-  color: #78C2AD;
   text-decoration: none;
   background-color: transparent;
 }

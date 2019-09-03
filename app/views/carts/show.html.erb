@@ -1,7 +1,7 @@
-<h1>Mon panier</h1>
+<h1 class="mt-4 ml-3">Mon panier</h1>
 
 <!-- if cart is empty display message -->
-<% if is_cart_empty == true %>
+<% if @cart.is_cart_empty == true %>
 <p>Vous n'avez pas encore séléctionné de photo de chaton. Aller sur la page d'accueil pour trouver votre bonheur!</p>
 
 <!-- else display cat pictures selected by customer -->
@@ -13,27 +13,73 @@
   <% count = 1 %>
   <% @cart.items.all.each do |item| %>
 
-    <div class="container border border-primary d-flex justify-content-between my-1">
+    <!-- Warning: CLASSNAME and ID used in "update.js.erb" -->
+    <div class="container d-flex justify-content-between" id="<%= item.id %>">
 
-        <p class="container m-auto border border-secondary d-flex justify-content-center" style="width: 10%"> count </p>
+      <div class="container border border-primary d-flex justify-content-between my-1">
 
-        <div class="container m-3 border border-info d-flex flex-column p-3">
-          <h5> item.title</h5>
-          <p> item.description </p>
-        </div>
+          <p class="container m-auto border border-secondary d-flex justify-content-center" style="width: 10%"> <%= count %> </p>
 
-        <div class="container m-3 border border-warning d-flex flex-column align-items-end p-3">
-          <img class="p-1" style="height: 150px;" src="avatar.png" alt="profil picture">
-          <p> item.id </p>
-        </div>
+          <div class="container m-3 border border-info d-flex flex-column p-3">
+            <h5> <%= item.title %></h5>
+            <p> <%= item.description %> </p>
+          </div>
 
-        <p class ="container m-auto border border-secondary d-flex justify-content-center" style="width: 10%"> item.price </p>
+          <div class="container m-3 border border-warning d-flex flex-column align-items-end p-3">
+            <img style="width: 25%;" src="<%= item.image_url %>" alt="profil picture">
+            <p> Id : <%= item.id %></p>
+          </div>
+
+          <p class ="container m-auto border border-secondary d-flex justify-content-center" style="width: 10%"> <%= item.price %> euros</p>
+
+      </div>
+
+      <div class="m-auto d-flex justify-content-center" >
+        <%= link_to cart_path(cart_id: @cart.id, item_id: item.id), method: :put , data: { confirm: 'Enlever cette photo de votre panier?' }, remote: true do %>
+          <i class="material-icons m-4" style="width: 10%">delete_forever</i>
+        <% end %>
+      </div>
+
+
     </div>
-
-    <i class="material-icons"> delete_forever </i>
 
     <% count = count + 1 %>
 
   <% end %>
+
+
+  <div class="container">
+    <!-- Suppress all items from cart -->
+    <div class="row justify-content-end my-3 mr-1">
+      <p> Tout supprimer </p>
+    </div>
+
+
+    <!-- Total price -->
+    <div class="row justify-content-end">
+      <p class="bg-info rounded-pill text-white p-3"><strong> Prix total de la commande : <%= @cart.total_price %> </strong></p>
+    </div>
+
+
+
+    <!-- Action Buttons : Confirm Cart / Go back to items Index -->
+    <div class="row justify-content-center">
+      <%= button_to "Valider la commande", new_order_path, :class => "btn btn-lg btn-success my-3", :method => :get %>
+    </div>
+    <div class="row justify-content-center">
+      <%= button_to "Retourner à la liste des photos", items_path, :class => "btn btn-sm btn-outline-success", :method => :get %>
+    </div>
+
+  </div>
+
+
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
 
 <% end %>
