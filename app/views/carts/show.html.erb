@@ -2,7 +2,7 @@
 
 <!-- if cart is empty display message -->
 <% if @cart.is_cart_empty == true %>
-<p>Vous n'avez pas encore séléctionné de photo de chaton. Aller sur la page d'accueil pour trouver votre bonheur!</p>
+<p class="ml-3">Vous n'avez pas encore séléctionné de photo de chaton. Aller sur la page d'accueil pour trouver votre bonheur!</p>
 
 <!-- else display cat pictures selected by customer -->
 <% else %>
@@ -11,36 +11,42 @@
   <legend class="container"> Photos sélectionnées : </legend>
 
   <% count = 1 %>
+  <!-- loop on all the cart's items -->
   <% @cart.items.all.each do |item| %>
 
-    <!-- Warning: CLASSNAME and ID used in "update.js.erb" -->
-    <div class="container d-flex justify-content-between" id="<%= item.id %>">
+    <!-- Warning: ID "item.id" used in "update.js.erb" -->
+    <div id="<%= item.id %>">
 
-      <div class="container border border-primary d-flex justify-content-between my-1">
+      <!-- Item card -->
+      <div class="container d-flex justify-content-between">
 
-          <p class="container m-auto border border-secondary d-flex justify-content-center" style="width: 10%"> <%= count %> </p>
+        <div class="container border border-primary d-flex justify-content-between my-1">
 
-          <div class="container m-3 border border-info d-flex flex-column p-3">
-            <h5> <%= item.title %></h5>
-            <p> <%= item.description %> </p>
-          </div>
+            <p class="container m-auto border border-secondary d-flex justify-content-center" style="width: 10%"> <%= count %> </p>
 
-          <div class="container m-3 border border-warning d-flex flex-column align-items-end p-3">
-            <img style="width: 25%;" src="<%= item.image_url %>" alt="profil picture">
-            <p> Id : <%= item.id %></p>
-          </div>
+            <div class="container m-3 border border-info d-flex flex-column p-3">
+              <h5> <%= item.title %></h5>
+              <p> <%= item.description %> </p>
+            </div>
 
-          <p class ="container m-auto border border-secondary d-flex justify-content-center" style="width: 10%"> <%= item.price %> euros</p>
+            <div class="container m-3 border border-warning d-flex flex-column align-items-end p-3">
+              <img style="width: 25%;" src="<%= item.image_url %>" alt="profil picture">
+              <p> Id : <%= item.id %></p>
+            </div>
+
+            <p class ="container m-auto border border-secondary d-flex justify-content-center" style="width: 10%"> <%= item.price %> euros</p>
+
+        </div>
+
+        <!-- trash bin for item suppression -->
+        <div class="m-auto d-flex justify-content-center" >
+          <%= link_to cart_path(cart_id: @cart.id, item_id: item.id, suppress_all: false), method: :put , data: { confirm: 'Enlever cette photo de votre panier?' }, remote: true do %>
+            <i class="material-icons m-4" style="width: 10%">delete_forever</i>
+          <% end %>
+        </div>
+
 
       </div>
-
-      <div class="m-auto d-flex justify-content-center" >
-        <%= link_to cart_path(cart_id: @cart.id, item_id: item.id), method: :put , data: { confirm: 'Enlever cette photo de votre panier?' }, remote: true do %>
-          <i class="material-icons m-4" style="width: 10%">delete_forever</i>
-        <% end %>
-      </div>
-
-
     </div>
 
     <% count = count + 1 %>
@@ -51,14 +57,17 @@
   <div class="container">
     <!-- Suppress all items from cart -->
     <div class="row justify-content-end my-3 mr-1">
-      <p> Tout supprimer </p>
+      <%= link_to cart_path(cart_id: @cart.id, suppress_all: true), method: :put , data: { confirm: 'Enlever toutes les photos de votre panier?' }, remote: true do %>
+        <p> Tout supprimer </p>
+      <% end %>
     </div>
 
 
     <!-- Total price -->
-    <div class="row justify-content-end">
-      <p class="bg-info rounded-pill text-white p-3"><strong> Prix total de la commande : <%= @cart.total_price %> </strong></p>
+    <div class="row justify-content-end mr-1">
+      <h6><strong> Prix total de la commande : <%= @cart.total_price %> </strong> </h6>
     </div>
+
 
 
 
