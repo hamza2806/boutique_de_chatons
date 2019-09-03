@@ -1,12 +1,15 @@
 <div class='container'>
 <div class='row'>
 <% @items.each do |item|%>
-<div class="card sm-4 kitten" style="width: 18rem;">
+<div class="card col-sm-4 border-light kitten">
   <img src='<%= item.image_url%>' class="card-img-top" alt="...">
-  <div class="card-body">
+  <div class="card-body cardbackground">
     <h5 class="card-title"><%=item.title %></h5>
-    <p class="card-text"> <%=item.description %></p>
-    <p class="card-text"> <%= item.price%></p>
+    <p class='card-text'> <%=item.price%>€</p>
+    
+  </div>
+  <div class='card-footer'>
+  <%= button_to "Click me to get more infos", item_path(item), class: "btn btn-secondary", :method => "get" %>
   </div>
   </div>
   <%end%>
