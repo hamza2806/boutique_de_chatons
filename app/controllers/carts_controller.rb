@@ -3,6 +3,7 @@ class CartsController < ApplicationController
   end
 
   def show
+    @cart = Cart.find_by(id:params[:id])
   end
 
   def new
