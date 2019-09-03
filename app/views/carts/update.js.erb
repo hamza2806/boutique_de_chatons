@@ -1,3 +1,5 @@
-var itemsEl = document.querySelectorAll("lengend + div");
+var itemId = "<%=@item_id%>";
 
-console.log(itemsEl);
+var itemToDelete = document.getElementById(itemId);
+
+itemToDelete.remove(itemToDelete.selectedIndex);
