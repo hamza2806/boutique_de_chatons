@@ -23,19 +23,19 @@
 
         <div class="container border border-primary d-flex justify-content-between my-1">
 
-            <p class="container m-auto border border-secondary d-flex justify-content-center" style="width: 10%"> <%= count %> </p>
+            <p class="container m-auto d-flex justify-content-center" style="width: 10%"> <%= count %> </p>
 
-            <div class="container m-3 border border-info d-flex flex-column p-3">
+            <div class="container m-3 border-left border-primary d-flex flex-column p-3">
               <h5> <%= item.title %></h5>
               <p> <%= item.description %> </p>
             </div>
 
-            <div class="container m-3 border border-warning d-flex flex-column align-items-end p-3">
+            <div class="container m-3 border-right border-primary d-flex flex-column align-items-end p-3">
               <img style="width: 25%;" src="<%= item.image_url %>" alt="profil picture">
               <p> Id : <%= item.id %></p>
             </div>
 
-            <p class ="container m-auto border border-secondary d-flex justify-content-center" style="width: 10%"> <%= item.price %> euros</p>
+            <p class ="container m-auto d-flex justify-content-center" style="width: 10%"> <%= item.price %> euros</p>
 
         </div>
 

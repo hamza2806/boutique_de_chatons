@@ -4,6 +4,10 @@ class CartsController < ApplicationController
  helper_method :current_cart
 
 
+
+  # user must be signed in to show his cart
+  
+
   def index
   end
 
@@ -46,20 +50,10 @@ class CartsController < ApplicationController
     # Two options depending on parameter value : 1/ suppress all items 2/ suppress only selected item
     # /1 suppress all items
     if @params_delete_all == "true"
-      puts "****************"
-      puts "****************"
-      puts "je suis ici, @params_delete_all == true "
-      puts "****************"
-      puts "****************"
 
       @cart.items.each do |item|
         @cart_item = JoinCartItem.find_by(cart_id:@cart.id, item_id:item.id)
         @item_id = item.id
-        puts "***************"
-        puts "***************"
-        puts @item_id
-        puts "***************"
-        puts "***************"
         # loop on each items on the cart, suppression of each couple on JoinCartItem
         @cart_item.destroy
       end
