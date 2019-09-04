@@ -14,8 +14,9 @@
   <!-- loop on all the cart's items -->
   <% @cart.items.all.each do |item| %>
 
-    <!-- Warning: ID "item.id" used in "update.js.erb" -->
-    <div id="<%= item.id %>">
+    <!-- Warning: CLASS "items_to_delete" and ID "item.id" are used as selectors in "update.js.erb" -->
+    <!-- DO NOT DELETE -->
+    <div class="items_to_delete" id="<%= item.id %>">
 
       <!-- Item card -->
       <div class="container d-flex justify-content-between">
@@ -56,7 +57,7 @@
 
   <div class="container">
     <!-- Suppress all items from cart -->
-    <div class="row justify-content-end my-3 mr-1">
+    <div class="row justify-content-end my-3 mr-1" id="delete_all">
       <%= link_to cart_path(cart_id: @cart.id, suppress_all: true), method: :put , data: { confirm: 'Enlever toutes les photos de votre panier?' }, remote: true do %>
         <p> Tout supprimer </p>
       <% end %>
@@ -64,7 +65,7 @@
 
 
     <!-- Total price -->
-    <div class="row justify-content-end mr-1">
+    <div class="row justify-content-end mr-1" id="total_price">
       <h6><strong> Prix total de la commande : <%= @cart.total_price %> </strong> </h6>
     </div>
 
@@ -72,7 +73,7 @@
 
 
     <!-- Action Buttons : Confirm Cart / Go back to items Index -->
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" id="button_validate_order">
       <%= button_to "Valider la commande", new_order_path, :class => "btn btn-lg btn-success my-3", :method => :get %>
     </div>
     <div class="row justify-content-center">

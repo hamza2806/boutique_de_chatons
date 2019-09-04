@@ -1,4 +1,7 @@
 class CartsController < ApplicationController
+
+  helper_method :current_cart
+
   def index
   end
 
@@ -16,6 +19,16 @@ class CartsController < ApplicationController
 #----------------------------
 
   def create
+    puts "***********************"
+    puts "***********************"
+    puts "cart controller create"
+    puts "***********************"
+    puts "***********************"
+
+    @cart = Cart.new
+    @cart.user_id = current_user.id
+    @cart.save
+
   end
 
 #----------------------------
@@ -27,28 +40,50 @@ class CartsController < ApplicationController
 
   def update
 
-    @cart_item = JoinCartItem.find_by(cart_id:params[:cart_id], item_id:params[:item_id])
-
-
-    # Two options depending on parameter value : 1/ suppress all items 2/ suppress only selected item
-    # /1
-    if params[:suppress_all] == true
-
+    # Add selected item to cart_id
     # TO COMPLETE
 
-    # /2
-    elsif params[:suppress_all] == "false"
 
+    @cart = Cart.find_by(id:params[:cart_id])
+    @params_delete_all = params[:suppress_all]
+
+    # Two options depending on parameter value : 1/ suppress all items 2/ suppress only selected item
+    # /1 suppress all items
+    if @params_delete_all == "true"
+      puts "****************"
+      puts "****************"
+      puts "je suis ici, @params_delete_all == true "
+      puts "****************"
+      puts "****************"
+
+      @cart.items.each do |item|
+        @cart_item = JoinCartItem.find_by(cart_id:@cart.id, item_id:item.id)
+        @item_id = item.id
+        puts "***************"
+        puts "***************"
+        puts @item_id
+        puts "***************"
+        puts "***************"
+        # loop on each items on the cart, suppression of each couple on JoinCartItem
+        @cart_item.destroy
+      end
+        respond_to do |format|
+          format.html { redirect_to cart_path(@card.id) }
+          format.js { }
+        end
+
+    # /2 suppress only selected item
+    elsif @params_delete_all == "false"
       @item_id = params[:item_id]
-
+      @cart_item = JoinCartItem.find_by(cart_id:@cart.id, item_id:@item_id)
       if @cart_item.destroy
         respond_to do |format|
-          format.html { redirect_to cart_path(params[:cart_id]) }
+          format.html { redirect_to cart_path(@card.id) }
           format.js { }
         end
       else
         flash.now[:error] = @cart_item.errors.full_messages.to_sentence
-        render :cart_path
+        render :"show"
       end
 
     end

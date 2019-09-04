@@ -1,5 +1,63 @@
-var itemId = "<%=@item_id%>";
+var paramDeleteAll = "<%=@params_delete_all%>";
 
-var itemToDelete = document.getElementById(itemId);
+// ****** Suppression of all the items ********
+// *********************************************
+if (paramDeleteAll == "true"){
 
-itemToDelete.remove(itemToDelete.selectedIndex);
+  var allItemsToDelete = document.getElementsByClassName("items_to_delete");
+
+  l = allItemsToDelete.length;
+
+  // loop on items to suppress all items
+  for (let count = l-1; count >= 0; count--){
+
+    allItemsToDelete[count].parentNode.removeChild(allItemsToDelete[count]);
+
+  }
+
+}
+// ****** Suppression of one item ********
+// ***************************************
+else if (paramDeleteAll == "false") {
+
+  var itemId = "<%=@item_id%>";
+
+  var itemToDelete = document.getElementById(itemId);
+
+  itemToDelete.remove(itemToDelete.selectedIndex);
+
+  // update total price
+  var totalPriceEl = document.getElementsByTagName("strong")[0];
+
+  totalPriceEl.innerHTML = "Prix total de la commande : <%= @cart.total_price %>"
+
+}
+
+
+// ****** If number of items = 0 => Suppression of following elements ********
+// ****************************************************************************
+var itemNumber = "<%= @cart.items.count %>";
+console.log(itemNumber);
+if (itemNumber == 0){
+
+  // suppress button "validate order"
+  var buttonToDelete = document.getElementById("button_validate_order");
+
+  buttonToDelete.remove(buttonToDelete.selectedIndex);
+
+  // suppress total price
+  var totalPrice = document.getElementById("total_price");
+
+  totalPrice.remove(totalPrice.selectedIndex);
+
+  // suppress delete all
+  var deleteAll = document.getElementById("delete_all");
+
+  deleteAll.remove(deleteAll.selectedIndex);
+
+  // suppress legend
+  var legendEl = document.getElementsByTagName("legend")[0];
+
+  legendEl.remove(legendEl.selectedIndex);
+
+}
