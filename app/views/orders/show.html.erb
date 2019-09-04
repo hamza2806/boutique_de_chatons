@@ -1,0 +1,14 @@
+<div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-around; padding-top: 100px">
+  <p>Voici les détails de votre commande</p>
+  <% @order.items.each_with_index do |item, index| %>
+    <div class="card text-white bg-secondary mb-3" style="width: 20rem;">
+      <div class="card-header">
+        <p> BDD_ID : <%= item.id %> </p>
+      </div>
+      <div class="card-body">
+        <p> Item : <%= index + 1 %> <br/><%= item.title %> <br/><%= item.price %> €</p>
+      </div>
+    </div>
+  <% end %>
+</div>
+<p>Coût total de votre commande numéro <%= @order.id %> est de : <%= @cost %></p>
