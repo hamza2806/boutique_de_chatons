@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
   
-
+ before_action :authenticate_user!
  
 
   def index
@@ -20,10 +20,10 @@ class CartsController < ApplicationController
 
 #----------------------------
 
-  def create(user)
-    @user = user
+  def create
+    @user = current_user
     @cart = Cart.new
-    @cart.user_id = user.id
+    @cart.user_id = current_user.id
     @cart.save
   end
 
