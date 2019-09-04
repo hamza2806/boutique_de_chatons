@@ -65,9 +65,6 @@ Rails.application.configure do
  
   config.action_mailer.raise_delivery_errors = true
 
-  ActionMailer::Base.delivery_method = :smtp
-ActionMailer::Base.perform_deliveries = true
-ActionMailer::Base.raise_delivery_errors = true
 ActionMailer::Base.smtp_settings = 
 {
 
