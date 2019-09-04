@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
   def new
   	@order = Order.new
   end
+
   def create
   	@order = Order.new(user: current_user)
   	@order.items = current_user.cart.items
@@ -26,15 +27,18 @@ class OrdersController < ApplicationController
                                             description: 'Rails Stripe customer',
                                             currency: 'eur',
            })
-    
+
       @order.save
       current_user.orders << @order
       flash[:success] = "You payment has been successfully processed, you will receve a confirmation email"
-      redirect_to order_path(@order.id)        
-    
+      # call method to empty cart once order is saved
+      current_user.cart.delete_all_items
+
+      redirect_to order_path(@order.id)
+
 
      rescue Stripe::CardError => e
      flash[:error] = e.message
-     redirect_to event_path(@event.id)
+     redirect_to carts_path(current_user.cart.id)
   end
 end
