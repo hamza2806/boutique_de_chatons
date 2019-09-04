@@ -15,11 +15,12 @@ class OrdersController < ApplicationController
   	@user = current_user
   	@amount = @user.cart.total_price
   end
+
   def create
   	@order = Order.new(user: current_user)
-    unless 
+    unless
       current_user.cart.items.count == 0
-    
+
   	@order.items = current_user.cart.items
   	@amount = (current_user.cart.total_price*100).to_i
 
@@ -38,8 +39,11 @@ class OrdersController < ApplicationController
       @order.save
       current_user.orders << @order
       flash[:success] = "You payment has been successfully processed, you will receve a confirmation email"
-      redirect_to order_path(@order.id)        
-    
+      # call method to empty cart once order is saved
+      current_user.cart.delete_all_items
+
+      redirect_to order_path(@order.id)
+
 
      rescue Stripe::CardError => e
      flash[:error] = e.message
