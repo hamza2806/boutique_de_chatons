@@ -24,8 +24,9 @@ order_list = []
 	cart_list << cart
 end
 
+
 40.times do 
-	item = Item.create(title: Faker::Lorem.word, description: Faker::Lorem.paragraph(sentence_count: 2), price: Faker::Number.decimal(l_digits: 2), image_url: Faker::LoremPixel.image)
+	item = Item.create(title: Faker::Lorem.word, description: Faker::Lorem.paragraph(sentence_count: 2), price: Faker::Number.decimal(l_digits: 2), image_url: Faker::LoremPixel.image, admin: user_list.sample)
     item_list << item 
 end
 
