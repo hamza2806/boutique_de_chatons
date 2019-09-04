@@ -70,3 +70,4 @@ gem 'pry'
 gem 'letter_opener'
 
 gem 'stripe'
+gem 'mail'
