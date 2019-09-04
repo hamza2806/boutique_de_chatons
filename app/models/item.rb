@@ -3,7 +3,12 @@ class Item < ApplicationRecord
 	has_many :carts, through: :join_cart_items
 	has_many :join_order_items
 	has_many :orders, through: :join_order_items
-	validates :title, :description, :price, :image_url, presence: true;
+	belongs_to :admin, class_name: "User"
+
+	has_many_attached :item_pictures
+
+
+	validates :title, :description, :price, presence: true;
 	validates :title, length: { maximum: 15};
 	validates :description, length: { maximum: 150};
 	validates :price, :format => { :with => /\A\d+(?:\.\d{0,2})?\z/ }, :numericality => {:greater_than => 0, :less_than => 100}

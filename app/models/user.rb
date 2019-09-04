@@ -5,5 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :orders
-  has_one :cart 
+  has_one :cart
+  has_many :administrated_items, foreign_key: 'admin_id', class_name: "Item"
+
 end

@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-
   resources :carts
   resources :orders
-
-  resources :items
+  resources :items do
+    resources :item_pictures, only: [:create]
+  end
 
   post "/orders", to: "orders#create", as: "buy"
   get "/profiles/:id", to: "profiles#show", as: "profile"

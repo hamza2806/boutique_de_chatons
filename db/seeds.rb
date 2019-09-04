@@ -18,16 +18,14 @@ order_list = []
 
 20.times do
 	user = User.create(email: Faker::Internet.email, password: Faker::Internet.password)
+	cart = Cart.create(user: user)
 	user_list << user
-end
-
-20.times do
-	cart = Cart.create(user: user_list.sample)
 	cart_list << cart
 end
 
+
 40.times do 
-	item = Item.create(title: Faker::Lorem.word, description: Faker::Lorem.paragraph(sentence_count: 2), price: Faker::Number.decimal(l_digits: 2), image_url: Faker::LoremPixel.image)
+	item = Item.create(title: Faker::Lorem.word, description: Faker::Lorem.paragraph(sentence_count: 2), price: Faker::Number.decimal(l_digits: 2), image_url: Faker::LoremPixel.image, admin: user_list.sample)
     item_list << item 
 end
 

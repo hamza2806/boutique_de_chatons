@@ -15,7 +15,10 @@ class CartsController < ApplicationController
 
 #----------------------------
 
-  def create
+  def create(user)
+    @user = user
+    @cart = Cart.new
+    @cart.user_id = user.id
   end
 
 #----------------------------
