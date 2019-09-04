@@ -1,0 +1,27 @@
+<%-# commented line  if current_user.id !== user.id  %>
+
+<div>
+  <p>Email : <%= @user.email%></p>
+  <button type="button" class="btn btn-outline-primary"> Editer mes informations de base </button>
+</div>
+
+
+
+
+
+
+<div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-around; padding-top: 100px">
+  <% @orders.each_with_index do |order, index| %>
+    <div class="card text-white bg-secondary mb-3" style="width: 20rem;">
+      <div class="card-header">
+        <p> Order : <%= index + 1 %> </p>
+        <p> BDD_ID : <%= order.id %> </p>
+      </div>
+      <div class="card-body">
+        <% order.items.each_with_index do |item, index| %>
+        <p> Item  <%= index+1 %> :  <%= item.title%> <%= item.created_at.to_date%> </p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

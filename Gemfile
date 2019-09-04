@@ -66,4 +66,7 @@ gem 'faker'
 gem 'dotenv-rails'
 gem 'activerecord'
 gem 'pry'
+
 gem 'letter_opener'
+
+gem 'stripe'

@@ -1,2 +1,95 @@
-<h1>Carts#show</h1>
-<p>Find me in app/views/carts/show.html.erb</p>
+<h1 class="mt-4 ml-3">Mon panier</h1>
+
+<!-- if cart is empty display message -->
+<% if @cart.is_cart_empty == true %>
+<p class="ml-3">Vous n'avez pas encore séléctionné de photo de chaton. Aller sur la page d'accueil pour trouver votre bonheur!</p>
+
+<!-- else display cat pictures selected by customer -->
+<% else %>
+
+  <!-- loop on all the items of the cart -->
+  <legend class="container"> Photos sélectionnées : </legend>
+
+  <% count = 1 %>
+  <!-- loop on all the cart's items -->
+  <% @cart.items.all.each do |item| %>
+
+    <!-- Warning: CLASS "items_to_delete" and ID "item.id" are used as selectors in "update.js.erb" -->
+    <!-- DO NOT DELETE -->
+    <div class="items_to_delete" id="<%= item.id %>">
+
+      <!-- Item card -->
+      <div class="container d-flex justify-content-between">
+
+        <div class="container border border-primary d-flex justify-content-between my-1">
+
+            <p class="container m-auto d-flex justify-content-center" style="width: 10%"> <%= count %> </p>
+
+            <div class="container m-3 border-left border-primary d-flex flex-column p-3">
+              <h5> <%= item.title %></h5>
+              <p> <%= item.description %> </p>
+            </div>
+
+            <div class="container m-3 border-right border-primary d-flex flex-column align-items-end p-3">
+              <img style="width: 25%;" src="<%= item.image_url %>" alt="profil picture">
+              <p> Id : <%= item.id %></p>
+            </div>
+
+            <p class ="container m-auto d-flex justify-content-center" style="width: 10%"> <%= item.price %> euros</p>
+
+        </div>
+
+        <!-- trash bin for item suppression -->
+        <div class="m-auto d-flex justify-content-center" >
+          <%= link_to cart_path(cart_id: @cart.id, item_id: item.id, suppress_all: false), method: :put , data: { confirm: 'Enlever cette photo de votre panier?' }, remote: true do %>
+            <i class="material-icons m-4" style="width: 10%">delete_forever</i>
+          <% end %>
+        </div>
+
+
+      </div>
+    </div>
+
+    <% count = count + 1 %>
+
+  <% end %>
+
+
+  <div class="container">
+    <!-- Suppress all items from cart -->
+    <div class="row justify-content-end my-3 mr-1" id="delete_all">
+      <%= link_to cart_path(cart_id: @cart.id, suppress_all: true), method: :put , data: { confirm: 'Enlever toutes les photos de votre panier?' }, remote: true do %>
+        <p> Tout supprimer </p>
+      <% end %>
+    </div>
+
+
+    <!-- Total price -->
+    <div class="row justify-content-end mr-1" id="total_price">
+      <h6><strong> Prix total de la commande : <%= @cart.total_price %> </strong> </h6>
+    </div>
+
+
+
+
+    <!-- Action Buttons : Confirm Cart / Go back to items Index -->
+    <div class="row justify-content-center" id="button_validate_order">
+      <%= button_to "Valider la commande", new_order_path, :class => "btn btn-lg btn-success my-3", :method => :get %>
+    </div>
+    <div class="row justify-content-center">
+      <%= button_to "Retourner à la liste des photos", items_path, :class => "btn btn-sm btn-outline-success", :method => :get %>
+    </div>
+
+  </div>
+
+
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+
+<% end %>
