@@ -5,7 +5,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.text :description
       t.decimal :price
       t.string :image_url
-
+      t.references :admin, index: true
       t.timestamps
     end
   end

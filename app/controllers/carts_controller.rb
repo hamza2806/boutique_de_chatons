@@ -24,6 +24,7 @@ class CartsController < ApplicationController
     @cart.user_id = current_user.id
     @cart.save
 
+
   end
 
 #----------------------------
