@@ -14,8 +14,8 @@
   <% if !user_signed_in? %>
       <%= button_to "To order, you must be logged in.", new_user_session_path, class: "btn btn-secondary gosign", :method => "get" %>
     <% else %>
-    <p> Félicitations, tu peux faire des folies </p>
-
+      <td><%= button_to 'Add to cart', {:controller => "join_cart_items", :action => "create", :item_id => @item.id} , :method=>:post, class: "btn btn-secondary" %></td>
+      
   <%end%>
   </div>
   </div>
