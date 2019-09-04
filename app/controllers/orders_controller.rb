@@ -47,7 +47,7 @@ class OrdersController < ApplicationController
 
      rescue Stripe::CardError => e
      flash[:error] = e.message
-     redirect_to cart_path(@current_user.cart.id)
+     redirect_to cart_path(current_user.cart.id)
 
   end
 end
