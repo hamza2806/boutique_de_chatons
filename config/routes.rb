@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  root to: 'items#index'
   devise_for :users
 
   resources :carts
   resources :orders
-
+  resources :join_cart_items
   resources :items
 
   post "/orders", to: "orders#create", as: "buy"

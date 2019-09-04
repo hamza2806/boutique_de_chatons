@@ -1,5 +1,4 @@
 class CartsController < ApplicationController
-
   helper_method :current_cart
 
   def index
