@@ -1,7 +1,12 @@
 class CartsController < ApplicationController
+  
+ before_action :authenticate_user!
+ helper_method :current_cart
+
+
 
   # user must be signed in to show his cart
-  before_action :authenticate_user!, only: [:show]
+  
 
   def index
   end
@@ -20,6 +25,7 @@ class CartsController < ApplicationController
 #----------------------------
 
   def new
+
   end
 
 #----------------------------
@@ -28,8 +34,6 @@ class CartsController < ApplicationController
     @cart = Cart.new
     @cart.user_id = current_user.id
     @cart.save
-
-
   end
 
 #----------------------------

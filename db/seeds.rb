@@ -16,6 +16,7 @@ cart_list = []
 item_list = []
 order_list = []
 
+
 20.times do
 	user = User.create(email: Faker::Internet.email, password: Faker::Internet.password)
 	cart = Cart.create(user: user)
