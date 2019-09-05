@@ -10,6 +10,8 @@ Item.destroy_all
 Cart.destroy_all
 Order.destroy_all
 User.destroy_all
+JoinCartItem.destroy_all
+JoinOrderItem.destroy_all
 
 user_list = []
 cart_list = []
@@ -20,9 +22,8 @@ puts "tout est supprimé"
 
 20.times do
 	user = User.create(email: Faker::Internet.email, password: Faker::Internet.password)
-	cart = Cart.create(user: user)
 	user_list << user
-	cart_list << cart
+	cart_list << user.cart
 end
 
 puts "20 users créés"

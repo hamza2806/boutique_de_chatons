@@ -7,7 +7,7 @@ class Order < ApplicationRecord
     
     #after_create :order_send
 
-    def order_send
-        UserMailer.order_new_email(self).deliver_now
-    end
+    #def order_send
+        #UserMailer.order_new_email(self).deliver_now
+    #end
 end

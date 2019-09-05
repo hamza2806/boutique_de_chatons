@@ -7,7 +7,6 @@ class OrdersController < ApplicationController
 
   def show
   	@order = Order.find(params[:id])
-    @cost = (current_user.cart.total_price).to_f
   end
 
   def new
