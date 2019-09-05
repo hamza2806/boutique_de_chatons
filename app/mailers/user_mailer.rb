@@ -9,4 +9,20 @@ class UserMailer < ApplicationMailer
 
         mail(to: @order.user.email, subject: 'Nouvelle commande !')
     end
+
+    def info_order(order)
+
+        puts "£"*60
+        puts "bonjour"
+        puts "£"*60
+  
+        @order = order
+      
+        @order.items.all.each do |item|
+          mail(to:item.admin.email, subject:'Une commande a été passée!')
+          
+        end
+        
+      
+    end
 end
