@@ -10,12 +10,12 @@
 
 
 
-<div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-around; padding-top: 100px">
+<div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-around; height: 100%">
   <% @orders.each_with_index do |order, index| %>
-    <div class="card text-white bg-secondary mb-3" style="width: 20rem;">
+    <div class="card text-white bg-secondary mb-3 col-sm-12">
       <div class="card-header">
         <p> Order : <%= index + 1 %> </p>
-        <p> BDD_ID : <%= order.id %> </p>
+        <p> ID : <%= order.id %> </p>
       </div>
       <div class="card-body">
         <% order.items.each_with_index do |item, index| %>

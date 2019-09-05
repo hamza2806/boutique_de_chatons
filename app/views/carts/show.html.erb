@@ -2,7 +2,10 @@
 
 <!-- if cart is empty display message -->
 <% if @cart.is_cart_empty == true %>
-<p class="ml-3">Vous n'avez pas encore séléctionné de photo de chaton. Aller sur la page d'accueil pour trouver votre bonheur!</p>
+<div class='container empty'>
+<p>Vous n'avez pas encore séléctionné de photo de chaton. Aller sur la page d'accueil pour trouver votre bonheur!</p>
+ <%= link_to "C'est par ici !", items_path %>
+</div>
 
 <!-- else display cat pictures selected by customer -->
 <% else %>

@@ -37,6 +37,9 @@ class OrdersController < ApplicationController
            })
     end
       @order.save
+      puts '**************************'
+      puts 'order.save'
+      puts '****************************'
       current_user.orders << @order
       flash[:success] = "You payment has been successfully processed, you will receve a confirmation email"
       # call method to empty cart once order is saved
