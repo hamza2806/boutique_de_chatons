@@ -7,7 +7,6 @@ class OrdersController < ApplicationController
 
   def show
   	@order = Order.find(params[:id])
-    @cost = (current_user.cart.total_price).to_f
   end
 
   def new
@@ -29,6 +28,7 @@ class OrdersController < ApplicationController
                                                 source: params[:stripeToken],
            })
 
+
            charge = Stripe::Charge.create({
                                             customer: customer.id,
                                             amount: @amount,
@@ -36,23 +36,23 @@ class OrdersController < ApplicationController
                                             currency: 'eur',
            })
     end
+
       @order.total_price = current_user.cart.total_price
+
       @order.save
-      puts '**************************'
-      puts 'order.save'
-      puts '****************************'
+
       current_user.orders << @order
-      flash[:success] = "You payment has been successfully processed, you will receve a confirmation email"
 
       # call method to empty cart once order is saved
       current_user.cart.delete_all_items
-      
+
+      flash[:success] = "Votre paiement a bien été enregistré, vous allez recevoir un email de confirmation."
       redirect_to order_path(@order.id)
 
 
      rescue Stripe::CardError => e
      flash[:error] = e.message
-     redirect_to cart_path(@current_user.cart.id)
+     redirect_to cart_path(current_user.cart.id)
 
   end
 end
