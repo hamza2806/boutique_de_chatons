@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
            })
     end
 
-      @order = Order.create(user_id: current_user.id, total_price:  current_user.cart.total_price)
+      @order = Order.create(user_id: current_user.id, total_price: current_user.cart.total_price)
       @order.items = current_user.cart.items
       current_user.orders << @order
       flash[:success] = "Merci pour votre paiement! Vous recevrez un email de confirmation"
