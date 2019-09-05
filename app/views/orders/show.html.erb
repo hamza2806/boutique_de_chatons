@@ -1,14 +1,16 @@
-<div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-around; padding-top: 100px">
-  <p>Voici les détails de votre commande</p>
+<h1 class="mt-4 ml-3">Récapitulatif de ma commande</h1>
+
+<div class="container d-flex flex-column my-3" style="width:50%" >
   <% @order.items.each_with_index do |item, index| %>
-    <div class="card text-white bg-secondary mb-3" style="width: 20rem;">
-      <div class="card-header">
-        <p> BDD_ID : <%= item.id %> </p>
-      </div>
+    <div class="card border-primary my-2">
+      <div class="card-header"> Ref: <%= item.id %></div>
       <div class="card-body">
-        <p> Item : <%= index + 1 %> <br/><%= item.title %> <br/><%= item.price %> €</p>
+        <h4 class="card-title"><%= item.title %></h4>
+        <p class="card-text"> Prix unitaire: <%= item.price %></p>
       </div>
     </div>
+
   <% end %>
 </div>
-<p>Coût total de votre commande numéro <%= @order.id %> est de : <%= @cost %></p>
+
+<p class="mt-4 ml-3">Le coût total de votre commande numéro <%= @order.id %> est de: <strong> <%= @order.total_price %> euros</strong>.</p>
