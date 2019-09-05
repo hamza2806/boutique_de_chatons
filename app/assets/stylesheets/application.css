@@ -85,11 +85,10 @@ footer {
   
 
 }
-.gosign {
-    overflow: hidden;
-    text-overflow: ellipsis;
-      word-break: break-all;
-
+.go-right {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;  
 }
 
 .space-footer{
