@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
   	    puts "*****************************"
 		puts params
         puts "*****************************"
-    @user = User.find(params[:id])
+    @user = current_user
     @orders = @user.orders
   end
 
