@@ -48,10 +48,8 @@ ActiveRecord::Schema.define(version: 2019_09_05_093058) do
     t.text "description"
     t.decimal "price"
     t.string "image_url"
-    t.bigint "admin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["admin_id"], name: "index_items_on_admin_id"
   end
 
   create_table "join_cart_items", force: :cascade do |t|
