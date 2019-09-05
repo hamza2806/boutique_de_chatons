@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :orders
 
   resources :items do
-    resources :item_pictures, only: [:create]
+    resources :item_pictures, only: [:create, :update, :destroy]
   end
 
   resources :join_cart_items
