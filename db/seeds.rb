@@ -18,38 +18,38 @@ cart_list = []
 item_list = []
 order_list = []
 
-puts "tout est supprimé"
+puts "All data have been deleted"
 
-20.times do
+10.times do
 	user = User.create(email: Faker::Internet.email, password: Faker::Internet.password)
 	user_list << user
 	cart_list << user.cart
 end
 
-puts "20 users créés"
+puts "10 users created"
 
-40.times do
+20.times do
 	item = Item.create(title: Faker::Lorem.word, description: Faker::Lorem.paragraph(sentence_count: 2), price: Faker::Number.decimal(l_digits: 2), image_url: Faker::LoremPixel.image, admin: user_list.sample)
     item_list << item
 end
 
-puts "40 items créés"
+puts "20 items created"
 
 20.times do
 	order = Order.create(user: user_list.sample, total_price: Faker::Number.decimal(l_digits: 2))
 	order_list << order
 end
 
-puts "20 ordres créés"
+puts "20 orders created"
 
 40.times do
 	cart_items = JoinCartItem.create(cart: cart_list.sample, item: item_list.sample)
 end
 
-puts "40 duos cart-item créés"
+puts "40 duos cart-item created"
 
 20.times do
 	order_item = JoinOrderItem.create(order: order_list.sample, item: item_list.sample)
 end
 
-puts "20 duos order-item créés"
+puts "20 duos order-item created"
