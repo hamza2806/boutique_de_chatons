@@ -5,7 +5,7 @@ class CartsController < ApplicationController
 
 
 
-  # user must be signed in to show his cart
+  # user must be signed_in to show his cart
 
 
   def index

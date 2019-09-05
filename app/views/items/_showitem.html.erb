@@ -1,30 +1,30 @@
 <section>
-<div class='container'>
-  <div class='row'>
-  <div id="<%=@item%>" class="card show  mb-3 col-sm-7">
-    <%if @item.item_pictures.attached?%>
-    <% @item.item_pictures.each do |item|%>
-    <div class="row"> <%= image_tag item %> </div>
-    <%end%>
-    <% else %>
-    <img src="<%=@item.image_url%>" class="card-img-top" alt="Pour quelques euros vous pouvez faire un heureux, vous.">
-    <%end%>
-    <div class="card-body">
+  <div class='container'>
+    <div class='row'>
+      <div id="<%=@item%>" class="card show  mb-3 col-sm-7">
+        <%if @item.item_pictures.attached?%>
+        <% @item.item_pictures.each do |item|%>
+        <div class="row"> <%= image_tag item %> </div>
+        <%end%>
+        <% else %>
+        <img src="<%=@item.image_url%>" class="card-img-top"
+          alt="Pour quelques euros vous pouvez faire un heureux, vous.">
+        <%end%>
+        <div class="card-body">
+        </div>
+      </div>
+      <div class="card show border-dark mb-3 col-sm-4">
+        <div class="card-body">
+          <h4 class="card-title"><%=@item.title%></h4>
+          <p class="card-text"> <%=@item.description%></p>
+          <p class='card-text'> <%=@item.price%></p>
+          <% if !user_signed_in? %>
+          <%= button_to "Vous devez être connecté", new_user_session_path, class: "btn btn-secondary", :method => "get" %>
+          <% else %>
+          <%= button_to 'Ajouter au panier', {:controller => "join_cart_items", :action => "create", :item_id => @item.id} , :method=>:post, class: "btn btn-primary" %>
+
+          <%end%>
+        </div>
+      </div>
     </div>
-</div>
-<div class="card show border-dark mb-3 col-sm-4">
-  <div class="card-body">
-    <h4 class="card-title"><%=@item.title%></h4>
-    <p class="card-text"> <%=@item.description%></p>
-    <p class='card-text'> <%=@item.price%></p>
-  <% if !user_signed_in? %>
-      <%= button_to "To order, you must be logged in.", new_user_session_path, class: "btn btn-secondary", :method => "get" %>
-    <% else %>
-      <%= button_to 'Add to cart', {:controller => "join_cart_items", :action => "create", :item_id => @item.id} , :method=>:post, class: "btn btn-primary" %>
-      
-  <%end%>
   </div>
-  </div>
-  </div>
-  </div>
-  

@@ -82,13 +82,13 @@ footer {
   left: 0;
   right: 0;
   height: 4em;
-  
+
 
 }
 .go-right {
   display: flex;
   flex-direction: row-reverse;
-  justify-content: flex-end;  
+  justify-content: flex-end;
 }
 
 .space-footer{
@@ -106,10 +106,10 @@ footer {
   padding-bottom: 5px;
   width: 18rem;
   text-overflow: ellipsis;
-  height: 35rem;
   text-align: center;
   padding-right: 10px;
   color: black;
+  object-fit: cover;
 }
 
 .show {
@@ -311,7 +311,7 @@ sup {
   top: -.5em;
 }
 #edition {
-  
+
   display: flex;
   flex-direction: column;
   justify-content: stretch;
@@ -329,7 +329,7 @@ sup {
   margin-left: auto;
   margin-top: 30px;
   margin-bottom: auto;
-  
+
 }
   .payment {
       margin-top: 150px;
@@ -341,14 +341,12 @@ sup {
       width: 100px;
     }
   .empty {
-    margin-top: 175px;
-    margin-bottom: 175px;
     padding: auto;
     flex-direction: row;
     justify-content: center;
     text-align: center;
     width: 100px;
-    
+
   }
 
 a {
@@ -5478,6 +5476,7 @@ input[type="button"].btn-block {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.4rem;
+  height: 35rem;
 }
 
 .card>hr {
@@ -5578,12 +5577,18 @@ input[type="button"].btn-block {
 .card-img {
   width: 100%;
   border-radius: calc(0.4rem - 1px);
+  object-fit: cover;
+  
 }
 
 .card-img-top {
   width: 100%;
   border-top-left-radius: calc(0.4rem - 1px);
   border-top-right-radius: calc(0.4rem - 1px);
+  object-fit: cover;
+  height: 100%;
+  
+
 }
 
 .card-img-bottom {

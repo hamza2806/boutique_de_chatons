@@ -1,28 +1,27 @@
-
 <% flash.each do |key, value| %>
-  <div class="alert alert-success" role="alert"> <%= value %> </div>
+<div class="alert alert-success" role="alert"> <%= value %> </div>
 <% end %>
-<div class="container">
+<div class="container empty">
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <br><br><br>
       <%= form_for @item, url: items_path, html: {method: :post, class: "form-signin mt-3" } do |f| %>
-        <h1 class="h3 mb-3 font-weight-normal text-center">New Item</h1>
-        <div class="form-group">
-          <%= f.label :title, "Title" %><br />
-          <%= f.text_field :title, autofocus: true, autocomplete: "title", class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :description %>
-          <%= f.text_field :description, autocomplete: "description", class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :price %><br />
-          <%= f.number_field :price, autocomplete: "price",  class: "form-control" %>
-        </div>
-        <div class="actions mt-5">
-          <%= f.submit "Create", class: "btn btn-lg btn-primary btn-block" %>
-        </div>
+      <h1 class="h3 mb-3 font-weight-normal text-center">Nouvelle photo</h1>
+      <div class="form-group">
+        <%= f.label :titre, "Title" %><br />
+        <%= f.text_field :title, autofocus: true, autocomplete: "title", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_field :description, autocomplete: "description", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :prix %><br />
+        <%= f.number_field :price, autocomplete: "price",  class: "form-control" %>
+      </div>
+      <div class="actions mt-5">
+        <%= f.submit "Créer", class: "btn btn-lg btn-primary btn-block" %>
+      </div>
       <% end %>
     </div>
   </div>
