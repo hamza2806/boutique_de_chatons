@@ -1,12 +1,15 @@
-<%-# commented line  if current_user.id !== user.id  %>
-<div class='container empty'>
-  <h1>Email : <%= @user.email%></h1>
+<h1 class="mt-4 ml-3">Mon profil</h1>
+
+<div class='container empty my-5'>
+  <h2>Email : <%= @user.email%></h2>
   <br/>
       <%= button_to "Editer mes informations", edit_user_registration_path(current_user), class: "btn btn-outline-secondary", :method => "get" %>
-
-<div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-around; height: 100%">
+</div>
+<br/>
+<div class="container my-3">
+  <h2 class="d-flex justify-content-start">Mes commandes précédentes :</h2>
   <% @orders.each_with_index do |order, index| %>
-    <div class="card border-primary my-2">
+    <div class="card border-primary my-3">
       <div class="card-header d-flex justify-content-between"> <span> <strong>Référence commande: <%= order.id %> </strong></span> <span> Date : <%= order.created_at.strftime("%m/%d/%Y") %> </span> </div>
       <div class="card-body">
         <ul class="list-group list-group-flush">
@@ -21,6 +24,4 @@
       <div class="card-footer d-flex justify-content-end"> <strong> Prix total de la commande :<%= order.id %> </strong></div>
     </div>
   <% end %>
-</div>
-
 </div>

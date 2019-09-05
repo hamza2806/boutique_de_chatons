@@ -35,12 +35,12 @@ end
 
 puts "20 items created"
 
-20.times do
+10.times do
 	order = Order.create(user: user_list.sample, total_price: Faker::Number.decimal(l_digits: 2))
 	order_list << order
 end
 
-puts "20 orders created"
+puts "10 orders created"
 
 40.times do
 	cart_items = JoinCartItem.create(cart: cart_list.sample, item: item_list.sample)
