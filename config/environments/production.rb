@@ -92,6 +92,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+
   config.action_mailer.default_url_options = { :host => 'https://cat-market-mpl.herokuapp.com' }
   config.action_mailer.perform_deliveries = true
 
@@ -110,7 +111,5 @@ Rails.application.configure do
     :user_name          => ENV['GMAIL_LOGIN'],
     :password           => ENV['GMAIL_PWD']
   }
-
-
 
 end
