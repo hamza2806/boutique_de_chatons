@@ -8,5 +8,6 @@ class Order < ApplicationRecord
 
     def order_send
         UserMailer.order_new_email(self).deliver_now
+        AdminMailer.info_order(admin_email, self).deliver_now
     end
 end
