@@ -1,25 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Yo ! 
 
-Things you may want to cover:
+Sur notre site tu vas pouvoir acheter une photo (qui ne sera pas forcément une photo de chatton du premier coup), la payer, un peu chère certes, et puis tu seras redirigé vers le récapitulé de sa commande. 
+Apparemment les items ajoutés via heroku n'ont pas l'air de persister, mais tu peux en ajouter et les voir sans soucis 
+Par contre, il n'y aura pas de email de réception sur la version heroku: nous avons mis en commentaire la methode after_create du modèle join_order_item. 
 
-* Ruby version
+En local, la méthode after créate fonctionne en la décochant. Il y a aussi une bannière  qui apparait dans le jumbotron.
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
 
 * ...
 https://cat-market-mpl.herokuapp.com/
