@@ -1,12 +1,12 @@
 class CartsController < ApplicationController
-  
+
  before_action :authenticate_user!
  helper_method :current_cart
 
 
 
   # user must be signed in to show his cart
-  
+
 
   def index
   end
@@ -14,7 +14,7 @@ class CartsController < ApplicationController
 #----------------------------
 
   def show
-    @cart = Cart.find_by(id:params[:id])
+    @cart = Cart.find_by(id: params[:id])
     unless current_user.id == @cart.user_id
       flash[:alert] = "Vous n'avez pas accès à ce panier"
       redirect_to root_path
