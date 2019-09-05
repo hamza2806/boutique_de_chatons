@@ -82,13 +82,13 @@ footer {
   left: 0;
   right: 0;
   height: 4em;
-  
+
 
 }
 .go-right {
   display: flex;
   flex-direction: row-reverse;
-  justify-content: flex-end;  
+  justify-content: flex-end;
 }
 
 .space-footer{
@@ -311,7 +311,7 @@ sup {
   top: -.5em;
 }
 #edition {
-  
+
   display: flex;
   flex-direction: column;
   justify-content: stretch;
@@ -329,7 +329,7 @@ sup {
   margin-left: auto;
   margin-top: 30px;
   margin-bottom: auto;
-  
+
 }
   .payment {
       margin-top: 150px;
@@ -341,14 +341,12 @@ sup {
       width: 100px;
     }
   .empty {
-    margin-top: 175px;
-    margin-bottom: 175px;
     padding: auto;
     flex-direction: row;
     justify-content: center;
     text-align: center;
     width: 100px;
-    
+
   }
 
 a {

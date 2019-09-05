@@ -1,4 +1,5 @@
 class AdminMailer < ApplicationMailer
+  
   def info_order(joinorderitem)
   
     @JoinOrderItem = joinorderitem
