@@ -38,6 +38,9 @@ class OrdersController < ApplicationController
     end
       @order.total_price = current_user.cart.total_price
       @order.save
+      puts '**************************'
+      puts 'order.save'
+      puts '****************************'
       current_user.orders << @order
       flash[:success] = "You payment has been successfully processed, you will receve a confirmation email"
 
