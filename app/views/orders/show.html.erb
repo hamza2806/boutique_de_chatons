@@ -3,7 +3,7 @@
 <div class="container d-flex flex-column my-3" style="width:50%" >
   <% @order.items.each_with_index do |item, index| %>
     <div class="card border-primary my-2">
-      <div class="card-header"> Ref: <%= item.id %></div>
+      <div class="card-header"> Reférence article: <%= item.id %></div>
       <div class="card-body">
         <h4 class="card-title"><%= item.title %></h4>
         <p class="card-text"> Prix unitaire: <%= item.price %></p>
