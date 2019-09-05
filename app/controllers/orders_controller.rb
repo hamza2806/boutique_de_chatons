@@ -24,11 +24,10 @@ class OrdersController < ApplicationController
   #------------------------------
 
   def create
-  	@order = Order.new(user: current_user)
+  	
     unless
       current_user.cart.items.count == 0
 
-  	@order.items = current_user.cart.items
   	@amount = (current_user.cart.total_price*100).to_i
 
            customer = Stripe::Customer.create({
@@ -45,10 +44,8 @@ class OrdersController < ApplicationController
            })
     end
 
-      @order.total_price = current_user.cart.total_price
-
-      @order.save
-
+      @order = Order.create(user_id: current_user.id, total_price:  current_user.cart.total_price)
+      @order.items = current_user.cart.items
       current_user.orders << @order
       flash[:success] = "Merci pour votre paiement! Vous recevrez un email de confirmation"
 
