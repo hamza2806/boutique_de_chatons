@@ -85,11 +85,10 @@ footer {
   
 
 }
-.gosign {
-    overflow: hidden;
-    text-overflow: ellipsis;
-      word-break: break-all;
-
+.go-right {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;  
 }
 
 .space-footer{
@@ -262,6 +261,14 @@ sub {
 sup {
   top: -.5em;
 }
+#edition {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  padding-left: 150px;
+}
+
 
 .container {
   width: 100%;
@@ -273,12 +280,32 @@ sup {
   margin-left: auto;
   margin-top: 30px;
   margin-bottom: auto;
-
+  
 }
+  .payment {
+      margin-top: 150px;
+      margin-bottom: 150px;
+      padding: auto;
+      flex-direction: row;
+      justify-content: center;
+      text-align: center;
+      width: 100px;
+    }
+  .empty {
+    margin-top: 150px;
+    margin-bottom: 150px;
+    padding: auto;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    width: 100px;
+    
+  }
 
 a {
   text-decoration: none;
   background-color: transparent;
+  color: #888;
 }
 
 a:hover {
