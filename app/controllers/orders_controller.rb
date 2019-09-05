@@ -1,19 +1,27 @@
 class OrdersController < ApplicationController
 
   before_action :authenticate_user!
+
+  #------------------------------
   def index
     @orders = Order.all
   end
 
+  #------------------------------
+
   def show
   	@order = Order.find(params[:id])
   end
+
+  #------------------------------
 
   def new
   	@order = Order.new
   	@user = current_user
   	@amount = @user.cart.total_price
   end
+
+  #------------------------------
 
   def create
   	@order = Order.new(user: current_user)
@@ -37,11 +45,8 @@ class OrdersController < ApplicationController
     end
       @order.total_price = current_user.cart.total_price
       @order.save
-      puts '**************************'
-      puts 'order.save'
-      puts '****************************'
       current_user.orders << @order
-      flash[:success] = "You payment has been successfully processed, you will receve a confirmation email"
+      flash[:success] = "Merci pour votre paiement! Vous recevrez un email de confirmation"
 
       # call method to empty cart once order is saved
       current_user.cart.delete_all_items
@@ -54,4 +59,5 @@ class OrdersController < ApplicationController
      redirect_to cart_path(@current_user.cart.id)
 
   end
+  
 end

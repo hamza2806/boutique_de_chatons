@@ -1,4 +1,6 @@
 class JoinCartItemsController < ApplicationController
+
+  #------------------------------
    
   def create
     @cart = Cart.find_by(user_id:current_user.id)
@@ -8,10 +10,12 @@ class JoinCartItemsController < ApplicationController
     if @cart.save
       redirect_to root_path
     else
-      flash[:error] = 'There was a problem adding this item to your cart.'
+      flash[:error] = 'Le produit n\'a pas été ajouté à votre panier'
       redirect_to @items
     end
   end
+
+  #------------------------------
 
   def destroy
     @cart_item.destroy
