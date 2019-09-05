@@ -1,27 +1,30 @@
-<%-# commented line  if current_user.id !== user.id  %>
+<h1 class="mt-4 ml-3">Mon profil</h1>
 
-<div>
+<div class = "container my-5">
+  <h4>Mes données personnelles</h4>
   <p>Email : <%= @user.email%></p>
   <button type="button" class="btn btn-outline-primary"> Editer mes informations de base </button>
 </div>
 
 
-
-
-
-
-<div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-around; height: 100%">
+<div class="container d-flex flex-column my-5">
+  <h4>Mes commandes</h4>
   <% @orders.each_with_index do |order, index| %>
-    <div class="card text-white bg-secondary mb-3 col-sm-12">
-      <div class="card-header">
-        <p> Order : <%= index + 1 %> </p>
-        <p> ID : <%= order.id %> </p>
-      </div>
+    <div class="card border-primary my-2">
+      <div class="card-header d-flex justify-content-between"> <span> <strong>Référence commande: <%= order.id %> </strong></span> <span> Date : <%= order.created_at.strftime("%m/%d/%Y") %> </span> </div>
       <div class="card-body">
-        <% order.items.each_with_index do |item, index| %>
-        <p> Item  <%= index+1 %> :  <%= item.title%> <%= item.created_at.to_date%> </p>
-        <% end %>
+        <ul class="list-group list-group-flush">
+          <% order.items.each_with_index do |item, index| %>
+          <li class="list-group-item d-flex justify-content-between">
+            <span> Article: "<%= item.title %>"</span>
+            <span> Prix unitaire: <%= item.price %></span>
+          </li>
+          <% end %>
+        </ul>
       </div>
+      <div class="card-footer d-flex justify-content-end"> <strong> Prix total de la commande :<%= order.id %> </strong></div>
     </div>
   <% end %>
+</div>
+
 </div>
