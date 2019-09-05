@@ -9,4 +9,6 @@ class UserMailer < ApplicationMailer
 
         mail(to: @order.user.email, subject: 'Nouvelle commande !')
     end
+
+
 end

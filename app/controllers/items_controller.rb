@@ -13,8 +13,15 @@ class ItemsController < ApplicationController
   end
 
   def create
-  	@item = Item.create(item_params)
-  	@item.admin_id = current_user.id
+  	@item = Item.new(item_params)
+  	@item.admin= current_user
+    if @item.save 
+    flash[:success] ="Yor item has been successfully registrated"
+    redirect_to item_path(@item.id)
+    else
+      flash.now[:error] = @item.errors
+      render "new"
+    end
   end
 
   private

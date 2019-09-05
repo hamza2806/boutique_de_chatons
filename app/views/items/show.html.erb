@@ -1,26 +1,9 @@
 <%= render 'showitem'%>
-<h5>Item pictures</h5>
-
-<%if @item.item_pictures.attached?%>
-<section>
-	<div class="container">
-	  <div class="row">
-	    <% @user.item_pictures.each do |item|%>
-	      <div class="col-sm-12 col-md-6 col-lg-4">
-	        <%= image_tag item, alt: 'item'%>
-	      </div>
-	    <%end%>
-	  </div>
-	</div>
-</section>
-<%else%>
-<p>=== This item has no pictures ===</p>
-<%end%>
 
 <% if @item.admin == current_user %>
-	<h5>Add an item</h5>
-	  <%= form_tag item_item_pictures_path(@item), multipart: true do %>
-	    <%= file_field_tag :item_pictures %>
-	    <%= submit_tag "Add" %>
-	    <% end %>
+		<h5>Add photos to your item</h5>
+		    <%= form_tag item_item_pictures_path(@item), multipart: true, method: :post, remote: true do %>
+		    <%= file_field_tag :item_pictures %>
+		    <%= submit_tag "Add" %>
+		    <% end %>
 <%end%>
