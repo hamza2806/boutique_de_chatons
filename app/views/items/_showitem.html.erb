@@ -1,8 +1,14 @@
 <section>
 <div class='container'>
   <div class='row'>
-  <div class="card show  mb-3 col-sm-7">
-  <img src="<%=@item.image_url%>" class="card-img-top" alt="Pour quelques euros vous pouvez faire un heureux, vous.">
+  <div id="<%=@item%>" class="card show  mb-3 col-sm-7">
+    <%if @item.item_pictures.attached?%>
+    <% @item.item_pictures.each do |item|%>
+    <div class="row"> <%= image_tag item %> </div>
+    <%end%>
+    <% else %>
+    <img src="<%=@item.image_url%>" class="card-img-top" alt="Pour quelques euros vous pouvez faire un heureux, vous.">
+    <%end%>
     <div class="card-body">
     </div>
 </div>
@@ -21,5 +27,4 @@
   </div>
   </div>
   </div>
-  </section>
-  <section>
+  
