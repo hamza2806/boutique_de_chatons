@@ -7,30 +7,37 @@
 
   <div class="collapse navbar-collapse" id="navbarColor02">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#">About us</a>
-      </li>
-      <li class="nav-item">
-        <% if user_signed_in?%>
-        <%= link_to 'My account', profile_path(current_user.id), class:'nav-link' %>
-        <% else %>
-        <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
-        <%end%>
-      <li class="nav-item">
-        <% if user_signed_in?%>
-        <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class:'nav-link' %>
-        <%else%>
-        <%end%>
-        <% if user_signed_in?%>
-      </ul>
-      <ul class='navbar-nav mr-2'>
-      <li id='go-right' class="nav-item mr-2">
-        <a class="nav-link" href="<%=cart_path(current_user.cart.id)%>"> <i class="fas fa-shopping-cart"></i> Mon panier</a>
-        <%else%>
-        <%end%>
-      </li>
 
+      <li class="nav-item">
+
+    </ul>
+    <ul class='navbar-nav mr-5'>
+
+  
+    
+      <li class="nav-item dropdown">
+        <% if user_signed_in?%>
+        <%= button_to 'Mon compte', profile_path(current_user.id), class:"nav-link dropbtn", :method =>'get'%>
+        <div class="dropdown-content">
+      <%= button_to "Editer mes informations", edit_user_registration_path(current_user), class: "btn btn-outline-secondary", :method => "get" %>
+          <%= button_to 'Se déconnecter', destroy_user_session_path,  method: :delete, class:'btn btn-outline-secondary' %>
+          <% else %>
+         <%= button_to 'Connexion', new_user_session_path, class:"nav-link dropbtn", :method =>'get'%>
+          <div class="dropdown-content">
+            <%= button_to 'Se connecter', new_user_session_path, :method =>'get', class: 'btn btn-outline-secondary' %>
+            <%= button_to 'Créer un compte', new_user_registration_path, :method =>'get', class: 'btn btn-outline-secondary' %>
+
+            <%end%>
       </li>
+      <li class="nav-item dropdown">
+        <% if user_signed_in?%>
+        <a class="nav-link" href="<%=cart_path(current_user.cart.id)%>"> <i class="fas fa-shopping-cart"></i> Mon
+          panier</a>
+
+        <%else%>
+        <%end%>
+      </li>
+    </ul>
 
   </div>
 </nav>
