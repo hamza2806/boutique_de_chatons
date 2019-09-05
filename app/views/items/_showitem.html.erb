@@ -18,9 +18,9 @@
     <p class="card-text"> <%=@item.description%></p>
     <p class='card-text'> <%=@item.price%></p>
   <% if !user_signed_in? %>
-      <%= button_to "To order, you must be logged in.", new_user_session_path, class: "btn btn-secondary gosign", :method => "get" %>
+      <%= button_to "To order, you must be logged in.", new_user_session_path, class: "btn btn-secondary", :method => "get" %>
     <% else %>
-      <%= button_to 'Add to cart', {:controller => "join_cart_items", :action => "create", :item_id => @item.id} , :method=>:post, class: "btn btn-secondary" %>
+      <%= button_to 'Add to cart', {:controller => "join_cart_items", :action => "create", :item_id => @item.id} , :method=>:post, class: "btn btn-primary" %>
       
   <%end%>
   </div>

@@ -14,7 +14,7 @@
         <% if !user_signed_in? %>
 
         <% else %>
-        <%= button_to 'Add to cart', {:controller => "join_cart_items", :action => "create", :item_id => item.id} , :method=>:post, class: "btn btn-secondary" %>
+        <%= button_to 'Add to cart', {:controller => "join_cart_items", :action => "create", :item_id => item.id} , :method=>:post, class: "btn btn-primary" %>
         <%end%>
       </div>
     </div>

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :join_cart_items
- 
-  get "/profiles/:id", to: "profiles#show", as: "profile"
+
+  get "/profile", to: "profiles#show", as: "profile"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

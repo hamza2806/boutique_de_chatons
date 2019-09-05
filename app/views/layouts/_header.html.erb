@@ -12,9 +12,9 @@
       </li>
       <li class="nav-item">
         <% if user_signed_in?%>
-        <%= link_to 'My account', profile_path(current_user.id), class:'nav-link' %>
+        <%= link_to 'My account', profile_path, class:'nav-link' %>
         <% else %>
-        <%= link_to 'Sign up', new_user_session_path, class: 'nav-link' %>
+        <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
         <%end%>
       <li class="nav-item">
         <% if user_signed_in?%>
@@ -22,15 +22,13 @@
         <%else%>
         <%end%>
         <% if user_signed_in?%>
-      </ul>
-      <ul class='navbar-nav mr-2'>
-      <li id='go-right' class="nav-item mr-2">
-        <a class="nav-link" href="<%=cart_path(current_user.cart.id)%>"> <i class="fas fa-shopping-cart"></i> Mon panier</a>
-        <%else%>
-        <%end%>
-      </li>
+    </ul>
 
-      </li>
-
+    <ul class='navbar-nav mr-2'>
+    <li id='go-right' class="nav-item mr-2">
+      <a class="nav-link" href="<%=cart_path(current_user.cart.id)%>"> <i class="fas fa-shopping-cart"></i> Mon panier</a>
+      <%else%>
+      <%end%>
+    </li>
   </div>
 </nav>
