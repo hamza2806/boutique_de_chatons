@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root to: 'items#index'
-  devise_for :users
-  resources :carts
-  resources :orders
+  devise_for :users, :path => 'mon_profil'
+  resources :carts, :path => 'mon_panier'
+  resources :orders, :path => 'commandes'
 
   resources :items do
     resources :item_pictures, only: [:create]

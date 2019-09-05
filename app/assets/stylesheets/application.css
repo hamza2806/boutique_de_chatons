@@ -106,10 +106,10 @@ footer {
   padding-bottom: 5px;
   width: 18rem;
   text-overflow: ellipsis;
-  height: 35rem;
   text-align: center;
   padding-right: 10px;
   color: black;
+  object-fit: cover;
 }
 
 .show {
@@ -5478,6 +5478,7 @@ input[type="button"].btn-block {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.4rem;
+  height: 35rem;
 }
 
 .card>hr {
@@ -5578,12 +5579,18 @@ input[type="button"].btn-block {
 .card-img {
   width: 100%;
   border-radius: calc(0.4rem - 1px);
+  object-fit: cover;
+  
 }
 
 .card-img-top {
   width: 100%;
   border-top-left-radius: calc(0.4rem - 1px);
   border-top-right-radius: calc(0.4rem - 1px);
+  object-fit: cover;
+  height: 100%;
+  
+
 }
 
 .card-img-bottom {

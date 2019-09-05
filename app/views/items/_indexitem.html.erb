@@ -2,19 +2,24 @@
   <div class='row'>
     <% @items.each do |item|%>
     <div class="card col-sm-4 border-light kitten">
-      <img src='<%= item.image_url%>' class="card-img-top" alt="...">
+      <%if item.item_pictures.attached?%>
+      <% item.item_pictures.each do |item|%>
+      <%= image_tag item%> 
+      <%end%>
+      <% else %>
+      <img src="<%=item.image_url%>" class="card-img-top" alt="Pour quelques euros vous pouvez faire un heureux, vous.">
+      <%end%>
       <div class="card-body cardbackground">
         <h5 class="card-title"><%=item.title %></h5>
         <p class='card-text'> <%=item.price%>€</p>
-
       </div>
       <div class='card-footer'>
-        <%= button_to "Click me to get more infos", item_path(item), class: "btn btn-secondary", :method => "get" %>
-        <br/>
+        <%= button_to "Plus d'informations", item_path(item), class: "btn btn-secondary", :method => "get" %>
+        <br />
         <% if !user_signed_in? %>
 
         <% else %>
-        <%= button_to 'Add to cart', {:controller => "join_cart_items", :action => "create", :item_id => item.id} , :method=>:post, class: "btn btn-primary" %>
+        <%= button_to 'Ajouter au panier', {:controller => "join_cart_items", :action => "create", :item_id => item.id} , :method=>:post, class: "btn btn-primary" %>
         <%end%>
       </div>
     </div>
